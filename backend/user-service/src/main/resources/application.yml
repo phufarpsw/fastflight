@@ -1,0 +1,18 @@
+server:
+  port: 9001
+  tomcat:
+    max-swallow-size: 100MB
+    max-http-form-post-size: 100MB
+spring:
+  application:
+    name: user-service
+  data:
+    mongodb:
+      uri: mongodb+srv://fastflight:putter123456@cluster0.haxae3r.mongodb.net/test
+      database: FastFlight
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 100MB
+      max-file-size: 100MB
+      max-request-size: 100MB
