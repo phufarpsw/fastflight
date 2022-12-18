@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="relative h-screen">
+    <SignUp />
     <Navbar />
     <div class="h-4/5 flex justify-center items-center">
       <div
@@ -226,7 +227,6 @@
                 </div>
               </div>
             </div>
-            <router-link to="/test"> Click </router-link>
             <button
               type="submit"
               class="
@@ -258,10 +258,15 @@
 <script>
 import axios from "axios";
 import navbar from "./component/navbar.vue";
+import SignUp from "./login/signup.vue";
 export default {
   name: "Home",
   components: {
-    Navbar: navbar
+    Navbar: navbar,
+    SignUp: SignUp
+  },
+  methods:{
+    
   }
 };
 </script>
@@ -282,8 +287,8 @@ export default {
 
 #app {
   background-color: #dbdaff;
-  background-image: url("../assets/mountain-bg.png");
-  background-size: cover;
+  background-image: url("../assets/mountains-5972713\ 1.svg");
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
 }
