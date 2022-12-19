@@ -1,7 +1,7 @@
 <template>
     <div class="
       absolute
-      loginModal
+      signUpModal
       flex
       justify-center
       items-center
@@ -10,7 +10,7 @@
       z-50
     ">
         <div class="absolute bg-white z-50 rounded-lg py-8 px-14" style="width: 700px; height: 500px">
-            <p class="absolute px-7 py-5 text-xl cursor-pointer" style="top: 0; right: 0" @click="closeLoginModal()">
+            <p class="absolute px-7 py-5 text-xl cursor-pointer" style="top: 0; right: 0" @click="closeSignupModal()">
                 X
             </p>
             <p class="text-3xl tracking-widest font-semibold font-chakra" style="color: #636161">
@@ -23,7 +23,6 @@
                     <p class="font-chakra font-thin">new</p>
                     <p class="font-chakra font-thin">account</p>
                 </div>
-
                 <div class="w-full flex space-x-2" style="width: 550px">
                     <label class="relative block">
                         <span class="
@@ -37,7 +36,7 @@
               ">
                             <img width="25px" src="../../../src/assets/username-icon.svg" alt="" />
                         </span>
-                        <input class="
+                        <input v-model="firstName" class="
                 w-full
                 thai-font
                 text-sm
@@ -64,7 +63,7 @@
               ">
                             <img width="25px" src="../../../src/assets/username-icon.svg" alt="" />
                         </span>
-                        <input class="
+                        <input v-model="lastName" class="
                 w-full
                 thai-font
                 text-sm
@@ -94,7 +93,7 @@
               ">
                             <img width="25px" src="../../../src/assets/username-icon.svg" alt="" />
                         </span>
-                        <input class="
+                        <input v-model="tel" class="
                 w-full
                 thai-font
                 text-sm
@@ -121,7 +120,7 @@
               ">
                             <img width="25px" src="../../../src/assets/email-icon.svg" alt="" />
                         </span>
-                        <input class="
+                        <input v-model="email" class="
                 w-full
                 thai-font
                 text-sm
@@ -151,7 +150,7 @@
               ">
                             <img width="25px" src="../../../src/assets/idcard-icon.svg" alt="" />
                         </span>
-                        <input class="
+                        <input v-model="idCard" class="
                 w-full
                 thai-font
                 text-sm
@@ -164,7 +163,7 @@
                 pr-4
                 focus:outline-none
                 peer
-              " placeholder="หมายเลขบัตรประชาชน" type="text" />
+              " placeholder="หมายเลขบัตรประชาชน" type="text" minlength="13" maxlength="13" required />
                     </label>
                     <label class="relative block">
                         <span class="
@@ -178,7 +177,7 @@
               ">
                             <img width="25px" src="../../../src/assets/username-icon.svg" alt="" />
                         </span>
-                        <input class="
+                        <input v-model="username" class="
                 w-full
                 thai-font
                 text-sm
@@ -205,7 +204,7 @@
               ">
                             <img width="25px" src="../../../src/assets/password-icon.svg" alt="" />
                         </span>
-                        <input class="
+                        <input v-model="password" class="
                 w-full
                 font-chakra
                 text-sm
@@ -222,7 +221,7 @@
                     </label>
 
                     <div class="">
-                        <button type="submit" class="
+                        <button type="submit" @click="registerData()" class="
                 search
                 w-full
                 text-white
@@ -242,7 +241,7 @@
                         <div class="mt-4 flex justify-center items-center">
                             <p class="font-chakra tracking-wide" style="color: #817a7a">
                                 Already an FastFlight member?
-                                <span class="
+                                <span @click="openLoginModal()" class="
                     font-chakra
                     tracking-widest
                     font-semibold
@@ -259,17 +258,76 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 import SignIn from "./login.vue";
 export default {
     name: "Signup",
     components: {
         // SignIn: SignIn
     },
+    data() {
+        return {
+            username: "",
+            password: "",
+            firstName: "",
+            lastName: "",
+            idCard: "",
+            email: "",
+            tel: "",
+        }
+    },
+    methods: {
+        openLoginModal(){
+            $(".loginModal").fadeIn();
+            this.closeSignupModal();
+        },
+        closeSignupModal() {
+            $(".signUpModal").fadeOut()
+        },
+        registerData() {
+            let check = {
+                "username": this.username,
+                "password": this.password,
+                "firstName": this.firstName,
+                "lastName": this.lastName,
+                "idCardNumber": this.idCard,
+                "email": this.email,
+                "tel": this.tel
+            };
+            let formData = new FormData();
+            formData.append("username", this.username);
+            formData.append("password", this.password);
+            formData.append("firstName", this.firstName);
+            formData.append("lastName", this.lastName);
+            formData.append("idCardNumber", this.idCard);
+            formData.append("email", this.email);
+            formData.append("tel", this.tel);
+            // axios.get("http://localhost:8081/passengers").then(function(res){
+            //     console.log(res.data)
+            // })
+            const header = {
+                // 'Access-Control-Allow-Origin': '*',
+                "Content-Type": "application/json"
+            }
+            axios.post("http://localhost:9001/passengers", check)
+                .then((res) => {
+                    if (res.data != "CreatePassenger Error") {  
+                        this.closeSignupModal();
+                        alert("Register Success");
+                    }
+                    else {
+                        alert("Register Failed");
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+        }
+    }
 };
 </script>
 <style>
 .thai-font {
-  color: #817a7a !important;
-  font-family: "Prompt", sans-serif;
+    color: #817a7a !important;
+    font-family: "Prompt", sans-serif;
 }
 </style>

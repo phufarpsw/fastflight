@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="relative h-screen">
-    <SignUp />
+    <SignUp v-show="openRegister"/>
+    <Login v-show="openLogin"/>
     <Navbar />
     <div class="h-4/5 flex justify-center items-center">
       <div
@@ -259,11 +260,19 @@
 import axios from "axios";
 import navbar from "./component/navbar.vue";
 import SignUp from "./login/signup.vue";
+import Login from './login/login.vue';
 export default {
   name: "Home",
+  data(){
+    return{
+      openLogin: false,
+      openRegister:false,
+    }
+  },
   components: {
     Navbar: navbar,
-    SignUp: SignUp
+    SignUp: SignUp,
+    Login: Login,
   },
   methods:{
     
