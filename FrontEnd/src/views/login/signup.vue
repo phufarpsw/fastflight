@@ -259,7 +259,6 @@
 </template>
 <script>
 import axios from 'axios';
-import SignIn from "./login.vue";
 export default {
     name: "Signup",
     components: {
@@ -294,24 +293,9 @@ export default {
                 "email": this.email,
                 "tel": this.tel
             };
-            let formData = new FormData();
-            formData.append("username", this.username);
-            formData.append("password", this.password);
-            formData.append("firstName", this.firstName);
-            formData.append("lastName", this.lastName);
-            formData.append("idCardNumber", this.idCard);
-            formData.append("email", this.email);
-            formData.append("tel", this.tel);
-            // axios.get("http://localhost:8081/passengers").then(function(res){
-            //     console.log(res.data)
-            // })
-            const header = {
-                // 'Access-Control-Allow-Origin': '*',
-                "Content-Type": "application/json"
-            }
             axios.post("http://localhost:9001/passengers", check)
                 .then((res) => {
-                    if (res.data != "CreatePassenger Error") {  
+                    if (res.data != "CreatePassenger Error" && res.data != "Please input your idCardNumber") {  
                         this.closeSignupModal();
                         alert("Register Success");
                     }

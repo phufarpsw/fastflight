@@ -10,13 +10,13 @@
         <p class="cursor-pointer">FLIGHT</p>
         <p class="cursor-pointer">PROMO</p>
       </div>
-      <div v-if="checkLogin === 'A'" class="login flex w-1/3 justify-end items-center ">
+      <div v-show="token === null" class="login flex w-1/3 justify-end items-center ">
         <p class="cursor-pointer" @click="openLogin()">LOGIN</p>
       </div>
-      <div v-else class="dropdown w-1/3 flex justify-end relative">
+      <div v-show="token !== null" class="dropdown w-1/3 flex justify-end relative">
         <button class="font-semibold rounded inline-flex items-center relative">
           <img width="30px" src="../../assets/profile.svg" alt="" />
-          <span class="mx-3 text-sky-700 font-copper text-sm uppercase">Putter HorSihn</span>
+          <span class="mx-3 text-sky-700 font-copper text-sm uppercase">{{ user.firstName+" "+user.lastName }}</span>
           <img src="../../assets/dropdown-icon.svg" alt="">
         </button>
         <ul class="w-5/12 dropdown-menu hidden cursor-pointer absolute text-gray-700 mt-10 pt-1 shadow-md z-50" >
@@ -45,14 +45,32 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   name: "Navbar",
   data() {
     return {
-      checkLogin: "A"
+      token: localStorage.getItem("user"),
+      user : [],
     };
   },
+  mounted(){
+    this.getData();
+  },
   methods: {
+    getData(){
+      let token = JSON.parse(localStorage.getItem("user"));
+      axios
+          .post(`http://localhost:9001/passengers/getUserByUsername`, {username : token.username})
+          .then(response => {
+            this.user = response.data;
+            // console.log(this.loginuser)
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
+    },
     openLogin(){
       $(".loginModal").fadeIn();
     },

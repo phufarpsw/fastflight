@@ -25,7 +25,7 @@
             ">
                         <img width="25px" src="../../../src/assets/username-icon.svg" alt="" />
                     </span>
-                    <input class="
+                    <input v-model="username" class="
               w-full
               font-chakra
               text-sm
@@ -52,7 +52,7 @@
             ">
                         <img width="25px" src="../../../src/assets/password-icon.svg" alt="" />
                     </span>
-                    <input class="
+                    <input v-model="password" class="
               w-full
               font-chakra
               text-sm
@@ -68,7 +68,7 @@
             " placeholder="Password" type="password" />
                 </label>
                 <div class="px-4 mt-4">
-                    <button type="submit" class="
+                    <button @click="loginPassenger()" type="submit" class="
                 search
                 font-copper
                 w-full
@@ -98,14 +98,37 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
-    name: "login",
+    name: "Login",
     data(){
         return {
+            username: "",
+            password: "",
             openRegister : false
         }
     },
     methods: {
+        loginPassenger() {
+            let check = {
+                "username": this.username,
+                "password": this.password,
+            };
+            axios.post("http://localhost:9001/passengers/login", check)
+                .then((res) => {
+                    if (res.data._id != null) {  
+                        this.closeLoginModal();
+                        localStorage.setItem("user", JSON.stringify(res.data));
+                        location.reload();
+                        alert("Login Success");
+                    }
+                    else {
+                        alert("Login Failed");
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+        },
         closeLoginModal() {
             $(".loginModal").fadeOut()
         },
