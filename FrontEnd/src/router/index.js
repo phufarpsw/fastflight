@@ -1,7 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Home from "../views/Home.vue"
-// import Test from "../views/Test.vue"
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -13,8 +11,7 @@ const router = new VueRouter({
   {
     path: '/test',
     name: "test",
-    // meta: { guest: true },
-    component : () => import('../views/Test.vue')
+    component : () => import("../views/PassengerDetails.vue")
   }
 ]
 });

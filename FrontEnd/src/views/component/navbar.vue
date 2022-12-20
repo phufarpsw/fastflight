@@ -15,7 +15,7 @@
       </div>
       <div v-show="token !== null" class="dropdown w-1/3 flex justify-end relative">
         <button class="font-semibold rounded inline-flex items-center relative">
-          <img width="30px" src="../../assets/profile.svg" alt="" />
+          <img width="30px" src="../../assets/fakeprofile.png" alt="" />
           <span class="mx-3 text-sky-700 font-copper text-sm uppercase">{{ user.firstName+" "+user.lastName }}</span>
           <img src="../../assets/dropdown-icon.svg" alt="">
         </button>
@@ -28,12 +28,12 @@
 
           </li>
           <li class="bg-white hover:bg-gray-200 py-3 px-4 text-xs flex items-center space-x-2">
-              <img width="22px" src="../../assets/profile.svg" alt="" />
+              <img width="22px" src="../../assets/fakeprofile.png" alt="" />
             <p class="">
               Profile
             </p>
           </li>
-          <li class="bg-white hover:bg-gray-200 py-3 px-4 text-xs flex items-center space-x-2" style="border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem;">
+          <li @click="signOut()" class="bg-white hover:bg-gray-200 py-3 px-4 text-xs flex items-center space-x-2" style="border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem;">
               <img width="22px" src="../../assets/signOut-icon.svg" alt="" />
             <p class="">
               Sign Out
@@ -51,7 +51,7 @@ export default {
   name: "Navbar",
   data() {
     return {
-      token: localStorage.getItem("user"),
+      token: JSON.parse(localStorage.getItem("passenger")),
       user : [],
     };
   },
@@ -60,16 +60,22 @@ export default {
   },
   methods: {
     getData(){
-      let token = JSON.parse(localStorage.getItem("user"));
-      axios
-          .post(`http://localhost:9001/passengers/getUserByUsername`, {username : token.username})
-          .then(response => {
-            this.user = response.data;
-            // console.log(this.loginuser)
-          })
-          .catch(error => {
-            this.error = error.response.data.message;
-          });
+      let token = JSON.parse(localStorage.getItem("passenger"));
+      if (token != undefined){
+        axios
+            .post(`http://localhost:9001/passengers/getUserByUsername`, {username : token.username})
+            .then(response => {
+              this.user = response.data;
+              // console.log(this.loginuser)
+            })
+            .catch(error => {
+              this.error = error.response.data.message;
+            });
+      }
+    },
+    signOut(){
+      localStorage.removeItem("passenger");
+      location.reload();
     },
     openLogin(){
       $(".loginModal").fadeIn();

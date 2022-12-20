@@ -259,6 +259,7 @@
 </template>
 <script>
 import axios from 'axios';
+import { required, email, minLength, sameAs, maxLength } from 'vuelidate/lib/validators'
 export default {
     name: "Signup",
     components: {
@@ -276,7 +277,7 @@ export default {
         }
     },
     methods: {
-        openLoginModal(){
+        openLoginModal() {
             $(".loginModal").fadeIn();
             this.closeSignupModal();
         },
@@ -293,18 +294,27 @@ export default {
                 "email": this.email,
                 "tel": this.tel
             };
-            axios.post("http://localhost:9001/passengers", check)
-                .then((res) => {
-                    if (res.data != "CreatePassenger Error" && res.data != "Please input your idCardNumber") {  
-                        this.closeSignupModal();
-                        alert("Register Success");
-                    }
-                    else {
-                        alert("Register Failed");
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+            window.dialog.show({
+                content: 'Are you sure want to continue?',
+                okText: 'Yes',
+                cancelText: 'Cancel',
+                onOk: () => {
+                    axios.post("http://localhost:9001/passengers", check)
+                    .then((res) => {
+                        if (res.data != "CreatePassenger Error" && res.data != "Please input your idCardNumber") {
+                            this.closeSignupModal();
+                            alert("Register Success");
+                        }
+                        else {
+                            alert("Register Failed");
+                        }
+                        location.reload();
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                },
+                onCancel: () => { console.log('You clicked cancel button') }
+            });
         }
     }
 };

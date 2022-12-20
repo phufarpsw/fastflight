@@ -118,7 +118,7 @@ export default {
                 .then((res) => {
                     if (res.data._id != null) {  
                         this.closeLoginModal();
-                        localStorage.setItem("user", JSON.stringify(res.data));
+                        localStorage.setItem("passenger", JSON.stringify(res.data));
                         location.reload();
                         alert("Login Success");
                     }
