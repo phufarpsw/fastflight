@@ -27,6 +27,7 @@ public class FlightAggregate {
     private String returnFlight;
     private int amount;
     private int available;
+    private int price;
 
     public FlightAggregate() {
 
@@ -51,5 +52,6 @@ public class FlightAggregate {
         this.returnFlight = createFlightEvent.getReturnFlight();
         this.amount = createFlightEvent.getAmount();
         this.available = createFlightEvent.getAvailable();
+        this.price = createFlightEvent.getPrice();
     }
 }

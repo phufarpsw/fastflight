@@ -16,4 +16,5 @@ public class CreateFlightEvent {
     private String returnFlight;
     private int amount;
     private int available;
+    private int price;
 }

@@ -38,8 +38,7 @@ public class FlightQueryHandler {
         List<FlightEntity> entity = flightRepository
                 .findByDestinationWithTo(findByDestinationWithTo.getFrom(),
                         findByDestinationWithTo.getTo(),
-                        findByDestinationWithTo.getDateFrom(),
-                        findByDestinationWithTo.getDateTo());
+                        findByDestinationWithTo.getDateFrom());
         if (entity != null){
             for(FlightEntity e: entity){
                 FlightRestModel flightRestModel = new FlightRestModel();

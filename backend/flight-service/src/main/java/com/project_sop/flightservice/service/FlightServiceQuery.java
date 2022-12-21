@@ -36,8 +36,7 @@ public class FlightServiceQuery {
         FindByDestinationWithTo findByDestinationWithTo = new FindByDestinationWithTo(
                 flightRestModel.getFrom(),
                 flightRestModel.getTo(),
-                flightRestModel.getDateFrom(),
-                flightRestModel.getDateTo());
+                flightRestModel.getDateFrom());
         List<FlightRestModel> flight = queryGateway.query(findByDestinationWithTo, ResponseTypes.multipleInstancesOf(FlightRestModel.class)).join();
         return flight;
     }

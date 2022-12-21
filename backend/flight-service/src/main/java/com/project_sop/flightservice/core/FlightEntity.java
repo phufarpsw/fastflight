@@ -22,4 +22,5 @@ public class FlightEntity implements Serializable {
     private String returnFlight;
     private int amount;
     private int available;
+    private int price;
 }

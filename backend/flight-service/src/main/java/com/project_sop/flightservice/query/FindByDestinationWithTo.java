@@ -7,12 +7,18 @@ public class FindByDestinationWithTo {
     private String from;
     private String to;
     private String dateFrom;
-    private String dateTo;
+//    private String dateTo;
+//
+//    public FindByDestinationWithTo(String from, String to, String dateFrom, String dateTo) {
+//        this.from = from;
+//        this.to = to;
+//        this.dateFrom = dateFrom;
+//        this.dateTo = dateTo;
+//    }
 
-    public FindByDestinationWithTo(String from, String to, String dateFrom, String dateTo) {
+    public FindByDestinationWithTo(String from, String to, String dateFrom) {
         this.from = from;
         this.to = to;
         this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
     }
 }

@@ -9,28 +9,25 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
         <module name="user-service" />
-        <module name="discovery-service" />
         <module name="flight-service" />
+        <module name="reserve-service" />
+        <module name="discovery-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway" target="17" />
-      <module name="contacts-service" target="17" />
-      <module name="course-service" target="17" />
       <module name="discovery-service" target="17" />
       <module name="flight-service" target="17" />
-      <module name="infected-service" target="17" />
+      <module name="reserve-service" target="17" />
       <module name="user-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
-      <module name="contacts-service" options="-parameters" />
-      <module name="course-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
       <module name="flight-service" options="-parameters" />
-      <module name="infected-service" options="-parameters" />
+      <module name="reserve-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>

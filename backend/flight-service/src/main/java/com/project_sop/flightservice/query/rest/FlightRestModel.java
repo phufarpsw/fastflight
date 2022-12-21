@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class FlightRestModel implements Serializable {
-    private String _id;
     private String airlineID;
     private String airline;
     private String planeName;
@@ -18,4 +17,5 @@ public class FlightRestModel implements Serializable {
     private String returnFlight;
     private int amount;
     private int available;
+    private int price;
 }

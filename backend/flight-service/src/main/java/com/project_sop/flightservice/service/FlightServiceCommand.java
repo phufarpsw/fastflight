@@ -33,6 +33,7 @@ public class FlightServiceCommand {
                 .returnFlight(createFlightRestModel.getReturnFlight())
                 .amount(createFlightRestModel.getAmount())
                 .available(createFlightRestModel.getAvailable())
+                .price(createFlightRestModel.getPrice())
                 .build();
         String result;
         try{

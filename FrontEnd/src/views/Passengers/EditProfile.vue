@@ -22,8 +22,7 @@
               </div>
             </div>
           </div>
-          <div  
-            class="justify-between">
+          <div class="justify-between">
             <div class="mb-8">
               <div class="flex border-b border-gray-200 py-3 justify-between">
                 <div class="flex">
@@ -40,7 +39,7 @@
           items-center
           p-10
         ">
-        <!-- Row 1 -->
+                <!-- Row 1 -->
                 <div class="w-full justify-center flex">
                   <form action="" class="w-full space-y-6">
                     <div class="w-full flex justify-between">

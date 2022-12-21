@@ -4,6 +4,17 @@ server:
     max-swallow-size: 100MB
     max-http-form-post-size: 100MB
 spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders:
+              - content-type
+            allowedMethods:
+              - GET
+              - POST
   application:
     name: flight-service
   data:

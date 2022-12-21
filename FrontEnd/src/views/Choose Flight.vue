@@ -160,7 +160,8 @@ export default {
     SignUp: SignUp,
     Login: Login,
     openLogin: false,
-      openRegister: false,
+    openRegister: false,
+    dateFlight: ""
   },
   data(){
     return {
@@ -183,13 +184,8 @@ export default {
       // $(query).toggleClass('toggleArrow')
     
     },
-    convertMonth(index){
-      let arr_date = JSON.parse(localStorage.getItem("searchFlight"))[index].dateFrom.split("-");
-      const date = new Date();
-      date.setMonth(arr_date[1]-1);
-      return arr_date[2]+" "+date.toLocaleString('en-US', {month: 'short'})+" "+arr_date[0];
-    },
     chooseFlight(index){
+      alert(this.dateFlight)
       localStorage.setItem("choose", JSON.stringify(this.Flights[index]))
       this.$router.push('/seat')
       console.log(JSON.stringify(this.Flights[index]))
@@ -200,7 +196,6 @@ export default {
     if (JSON.parse(localStorage.getItem("passenger")) == null){
       alert("Please Login First !")
       this.$router.push('/')
-
     }
   }
 };

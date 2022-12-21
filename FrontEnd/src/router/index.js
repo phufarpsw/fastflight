@@ -30,7 +30,7 @@ const router = new VueRouter({
   },
   {
     path: '/edit',
-    name: "recipe",
+    name: "edit",
     component : () => import("../views/Passengers/EditProfile.vue")
   }
 ]
