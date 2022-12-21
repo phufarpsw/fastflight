@@ -2,26 +2,23 @@
   <div id="app" class="relative min-h-screen">
     <Navbar />
     <div class="flex justify-center items-center mt-10">
-      <div
-        class="
+      <div class="
           container-form
           justfiy-center
           items-center
           bg-white
           rounded-lg
-        "
-      >
-      <div class="border-b p-4">
-                <p class="text-center">ข้อมูลการติดต่อ</p>
-            </div>
+        ">
+        <div class="border-b p-4">
+          <p class="text-center">ข้อมูลการติดต่อ</p>
+        </div>
         <div class="w-full px-12 flex flex-col my-6">
           <form action="" class="w-full space-y-6">
             <!-- TextField flight -->
             <div class="flight w-full flex justify-between">
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -29,12 +26,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/prename.png" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -47,10 +42,7 @@
                       pr-4
                       focus:outline-none
                       peer
-                    "
-                    placeholder="ชื่อจริง"
-                    type="text"
-                  />
+                    " placeholder="ชื่อจริง และชื่อกลาง (หากมี)" type="text" />
                 </label>
               </div>
 
@@ -61,8 +53,7 @@
               /> -->
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -70,12 +61,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/prename.png" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -87,10 +76,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    "
-                    placeholder="นามสกุล"
-                    type="text"
-                  />
+                    " placeholder="นามสกุล" type="text" />
                 </label>
               </div>
             </div>
@@ -98,8 +84,7 @@
             <div class="psg w-full flex justify-between">
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -107,12 +92,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/thaiflag.png" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -124,16 +107,12 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    "
-                    placeholder="หมายเลขโทรศัพท์มือถือ"
-                    type="text"
-                  />
+                    " placeholder="หมายเลขโทรศัพท์มือถือ" type="text" />
                 </label>
               </div>
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -141,12 +120,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/envelope.png" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -158,10 +135,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    "
-                    placeholder="อีเมล"
-                    type="text"
-                  />
+                    " placeholder="อีเมล" type="text" />
                 </label>
               </div>
             </div>
@@ -170,27 +144,24 @@
       </div>
     </div>
     <!-- Section 2  -->
-    <div class="flex justify-center mt-6">
-      <div
-        class="
+    <div v-for="(item, index) in this.numOfPassenger" :key="index" class="flex justify-center mt-6">
+      <div class="
           container-form
           justfiy-center
           items-center
           bg-white
           rounded-lg
-        "
-      >
-      <div class="border-b p-4">
-                <p class="text-center">ข้อมูลผู้เดินทาง</p>
-            </div>
+        ">
+        <div class="border-b p-4">
+          <p class="text-center">ข้อมูลผู้เดินทาง {{'คนที่ '+(index+1) }}</p>
+        </div>
         <div class="w-full px-12 flex flex-col my-6">
           <form action="" class="w-full space-y-6">
             <!-- TextField flight -->
             <div class="flight w-full flex justify-between">
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -198,12 +169,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/prename.png" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -216,10 +185,7 @@
                       pr-4
                       focus:outline-none
                       peer
-                    "
-                    placeholder="ชื่อจริง"
-                    type="text"
-                  />
+                    " placeholder="ชื่อจริง" type="text" />
                 </label>
               </div>
 
@@ -231,8 +197,7 @@
               /> -->
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -240,12 +205,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/prename.png" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -257,10 +220,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    "
-                    placeholder="นามสกุล"
-                    type="text"
-                  />
+                    " placeholder="นามสกุล" type="text" />
                 </label>
               </div>
             </div>
@@ -268,8 +228,7 @@
             <div class="flight w-full flex justify-between">
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -277,12 +236,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/bornat.svg" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -295,10 +252,7 @@
                       pr-4
                       focus:outline-none
                       peer
-                    "
-                    placeholder="วันเดือนปีเกิด"
-                    type="text"
-                  />
+                    " placeholder="วันเดือนปีเกิด" type="date" />
                 </label>
               </div>
 
@@ -310,8 +264,7 @@
               /> -->
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -319,12 +272,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
-                    <img src="../../src/assets/earth.svg" alt="" style="width : 30px"/>
+                    ">
+                    <img src="../../src/assets/earth.svg" alt="" style="width : 30px" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -336,10 +287,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    "
-                    placeholder="สัญชาติ"
-                    type="text"
-                  />
+                    " placeholder="สัญชาติ" type="text" />
                 </label>
               </div>
             </div>
@@ -347,8 +295,7 @@
             <div class="psg w-full flex justify-between">
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -356,12 +303,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../assets/passportnumber.svg" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -373,16 +318,12 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    "
-                    placeholder="หมายเลขหนังสือเดินทาง"
-                    type="text"
-                  />
+                    " placeholder="หมายเลขหนังสือเดินทาง" type="text" />
                 </label>
               </div>
               <div>
                 <label class="relative block" style="width: 335px">
-                  <span
-                    class="
+                  <span class="
                       absolute
                       inset-y-0
                       left-0
@@ -390,12 +331,10 @@
                       justify-center
                       items-center
                       pl-2
-                    "
-                  >
+                    ">
                     <img src="../../src/assets/visacountry.svg" alt="" />
                   </span>
-                  <input
-                    class="
+                  <input class="
                       w-full
                       thai-font
                       text-sm
@@ -407,25 +346,18 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    "
-                    placeholder="ประเทศที่ออกหนังสือเดินทาง"
-                    type="text"
-                  />
+                    " placeholder="ประเทศที่ออกหนังสือเดินทาง" type="text" />
                 </label>
               </div>
             </div>
             <div class="w-full">
-              <template  class="date-input w-full" >
+              <template class="date-input w-full">
                 <div v-on="inputEvents">
-              <label class="relative block">
-                <span
-                  justify-center
-                  class="absolute inset-y-0 left-0 flex items-center pl-2"
-                >
-                  <img src="../../src/assets/calendar.svg" alt="" />
-                </span>
-                <input
-                  class="
+                  <label class="relative block">
+                    <span justify-center class="absolute inset-y-0 left-0 flex items-center pl-2">
+                      <img src="../../src/assets/bornat.svg" alt="" />
+                    </span>
+                    <input class="
                     w-full
                     thai-font
                     text-sm
@@ -437,19 +369,12 @@
                     pl-12
                     pr-4
                     focus:outline-none
-                  "
-                  placeholder="วันหมดอายุหนังสือเดินทาง"
-                  type="text"
-                  style="cursor: default;"
-                  readonly
-                />
-              </label>
-            </div>
+                  " placeholder="วันหมดอายุหนังสือเดินทาง" type="date"/>
+                  </label>
+                </div>
               </template>
             </div>
-            <button
-              type="submit"
-              class="
+            <button type="submit" class="
                 search
                 font-copper
                 w-full
@@ -463,8 +388,7 @@
                 text-center
                 items-center
                 dark:bg-blue-600 dark:focus:ring-purple-400
-              "
-            >
+              ">
               CONTINUE
             </button>
           </form>
@@ -484,9 +408,10 @@ export default {
   components: {
     Navbar: navbar,
   },
-  data(){
+  data() {
     return {
-      flightMode : "multiple",
+      flightMode: "multiple",
+      numOfPassenger: JSON.parse(localStorage.getItem("numOfPassenger")),
       goDate: null,
       attrs: [
         {
@@ -497,17 +422,24 @@ export default {
           },
         },
       ],
-    range: {
-      start: null,
-      end: null
-    }
+      range: {
+        start: null,
+        end: null
+      }
     };
   },
-  methods : {
-    setOneFlightTrue(){
+  methods: {
+    setOneFlightTrue() {
       this.oneFlight = true
     },
   },
+  mounted() {
+    if (JSON.parse(localStorage.getItem("passenger")) == null) {
+      alert("Please Login First !")
+      this.$router.push('/')
+
+    }
+  }
 };
 </script>
 
@@ -517,9 +449,11 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.font-copper{
+
+.font-copper {
   font-family: "Copperplate";
 }
+
 .thai-font {
   color: #817a7a !important;
   font-family: "Prompt", sans-serif;
@@ -551,7 +485,8 @@ input[type="radio"] {
   /* background: radial-gradient(teal 0%, teal 40%, transparent 50%, transparent); */
   accent-color: #652f71;
 }
-.seat-select > option{
+
+.seat-select>option {
   padding-top: 10rem;
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
   <div id="app" class="relative min-h-screen">
+    <SignUp v-show="openRegister" />
+    <Login v-show="openLogin" />
     <Navbar />
+
     <div class="w-full mt-10 h-4/5 flex justify-center items-center">
       <div class="
           flex
@@ -28,9 +31,10 @@
                 shadow-lg
               " style="width:1000px">
                   <div class="w-full flex justify-between items-center p-2">
-                    <img v-if="Flights[index].airline == 'Thai'"  src="../assets/flightlogo.svg" />
+                    <img v-if="Flights[index].airline == 'Thai'" src="../assets/flightlogo.svg" />
                     <img v-else-if="Flights[index].airline == 'Lion'" src="../assets/Lionairline.svg" />
                     <img v-else-if="Flights[index].airline == 'AirAsia'" src="../assets/koreaAirline.svg" />
+                    <img v-else-if="Flights[index].airline == 'NokAir'" src="../assets/scoot-air.svg" />
 
                     <div class="ml-6 flex justify-center items-center">
                       <div class="ml-4">
@@ -46,7 +50,7 @@
                         <p>15h 5m</p>
                         <p>Transit</p>
                       </div>
-                      <p class="ml-12">฿ 7247 /pax</p>
+                      <p class="ml-12">฿ {{ item.price }} /pax</p>
                     </div>
                     <div class="flex justify-center items-center space-x-6">
                       <button type="submit" :id="'btnChoose' + index" @click="chooseFlight(index)" class="
@@ -147,10 +151,16 @@
 import axios from "axios";
 import navbar from "./component/navbar.vue";
 import Vue from 'vue';
+import SignUp from "./login/signup.vue";
+import Login from './login/login.vue';
 export default {
   name: "choose",
   components: {
     Navbar: navbar,
+    SignUp: SignUp,
+    Login: Login,
+    openLogin: false,
+      openRegister: false,
   },
   data(){
     return {
@@ -181,12 +191,17 @@ export default {
     },
     chooseFlight(index){
       localStorage.setItem("choose", JSON.stringify(this.Flights[index]))
+      this.$router.push('/seat')
       console.log(JSON.stringify(this.Flights[index]))
     }
   },
   mounted(){
     $(".dropdown-set").hide();
-    console.log(this.$router.name)
+    if (JSON.parse(localStorage.getItem("passenger")) == null){
+      alert("Please Login First !")
+      this.$router.push('/')
+
+    }
   }
 };
 </script>
@@ -222,6 +237,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
+  background-attachment: fixed;
 }
 
 #panel,

@@ -20,10 +20,10 @@
                 <input type="radio" name="type_travel" v-model="flightMode" value="oneflight" />
                 <label for="" class="font-medium thai-font" style="color: #817a7a">เดินทางเที่ยวเดียว</label>
               </div>
-              <div class="space-x-2">
+              <!-- <div class="space-x-2">
                 <input type="radio" name="type_travel" v-model="flightMode" value="multiple" />
                 <label for="" class="font-medium thai-font" style="color: #817a7a">การเดินทาง-ไปกลับ</label>
-              </div>
+              </div> -->
             </div>
             <!-- TextField flight -->
             <div class="flight w-full flex justify-between">
@@ -206,7 +206,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    " placeholder="จำนวนผู้โดยสาร" type="text" />
+                    " placeholder="จำนวนผู้โดยสาร" v-model="numOfPassenger" type="text" />
                 </label>
               </div>
               <!-- Select Class -->
@@ -296,6 +296,7 @@ export default {
       goingTo: "",
       dateFrom: "",
       dateTo:"",
+      numOfPassenger:"",
       openLogin: false,
       openRegister: false,
       flightMode: "oneflight",
@@ -330,7 +331,6 @@ export default {
   methods: {
     findFlight() {
       this.dateFrom = this.goDate.replaceAll("/", "-")
-      // this.dateTo = this.range.end.replaceAll("/", "-")
       let flight = {
         "from": "Bangkok - Suvarnabhumi",
         "to": this.goingTo,
@@ -343,6 +343,7 @@ export default {
                     if (res.data.length != 0) {
                       localStorage.setItem("searchFlight", JSON.stringify(res.data))
                       localStorage.setItem("toSearch", this.goingTo)
+                      localStorage.setItem("numOfPassenger", this.numOfPassenger)
                       this.$router.push('/choose')
                     }
                     else {

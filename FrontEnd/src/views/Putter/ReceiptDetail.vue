@@ -123,7 +123,15 @@ export default {
     setOneFlightTrue(){
       this.oneFlight = true
     },
+    
   },
+  mounted(){
+    if (JSON.parse(localStorage.getItem("passenger")) == null){
+      alert("Please Login First !")
+      this.$router.push('/')
+
+    }
+  }
 };
 </script>
 

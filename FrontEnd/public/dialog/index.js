@@ -72,3 +72,4 @@ const hide = () => {
 })();
 
 window.dialog = dialog;
+  
