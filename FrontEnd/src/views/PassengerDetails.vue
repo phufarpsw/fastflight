@@ -1,7 +1,7 @@
 <template>
-  <div id="app" class="relative h-screen">
+  <div id="app" class="relative min-h-screen">
     <Navbar />
-    <div class="flex justify-center items-center mt-24">
+    <div class="flex justify-center items-center mt-10">
       <div
         class="
           container-form
@@ -170,7 +170,7 @@
       </div>
     </div>
     <!-- Section 2  -->
-    <div class="flex justify-center mt-12">
+    <div class="flex justify-center mt-6">
       <div
         class="
           container-form
@@ -527,7 +527,7 @@ export default {
 
 #app {
   background-color: #dbdaff;
-  background-image: url("../assets/mountain-bg.png");
+  background-image: url("../assets/bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;

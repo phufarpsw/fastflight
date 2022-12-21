@@ -6,9 +6,11 @@
         <p class="text-lg">FASTFLIGHT</p>
       </div>
       <div class="group-menubar text-sm w-1/3 flex justify-between items-center">
-        <p class="cursor-pointer">HOME</p>
-        <p class="cursor-pointer">FLIGHT</p>
-        <p class="cursor-pointer">PROMO</p>
+      <router-link to="/">
+        <p class="cursor-pointer font-copper">HOME</p>
+      </router-link>
+        <p class="cursor-pointer font-copper">FLIGHT</p>
+        <p class="cursor-pointer font-copper">PROMO</p>
       </div>
       <div v-show="token === null" class="login flex w-1/3 justify-end items-center ">
         <p class="cursor-pointer" @click="openLogin()">LOGIN</p>
@@ -80,7 +82,7 @@ export default {
     openLogin(){
       $(".loginModal").fadeIn();
     },
-  }
+  },
 }
 </script>
 <style scoped>
@@ -95,7 +97,7 @@ nav {
   border-bottom: 1px solid #525197;
 }
 
-nav>div>p {
+nav>div>p, .font-copper{
   font-family: "Copperplate";
 }
 

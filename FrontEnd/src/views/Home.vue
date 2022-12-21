@@ -17,12 +17,12 @@
           <form action="" class="w-full space-y-6">
             <div class="radio-button flex space-x-6">
               <div class="space-x-2">
-                <input type="radio" name="type_travel" checked v-model="flightMode" value="multiple" />
-                <label for="" class="font-medium thai-font" style="color: #817a7a">การเดินทาง-ไปกลับ</label>
-              </div>
-              <div class="space-x-2">
                 <input type="radio" name="type_travel" v-model="flightMode" value="oneflight" />
                 <label for="" class="font-medium thai-font" style="color: #817a7a">เดินทางเที่ยวเดียว</label>
+              </div>
+              <div class="space-x-2">
+                <input type="radio" name="type_travel" v-model="flightMode" value="multiple" />
+                <label for="" class="font-medium thai-font" style="color: #817a7a">การเดินทาง-ไปกลับ</label>
               </div>
             </div>
             <!-- TextField flight -->
@@ -77,7 +77,7 @@
                     ">
                     <img src="../../src/assets/plane-down.svg" alt="" />
                   </span>
-                  <v-select :options="books" class=""  label="selected" outlined>
+                  <v-select v-model="goingTo" :options="books" class="thai-font text-sm"  placeholder="เลือกเมืองปลายทาง" outlined>
                   </v-select>
                   <!-- <input class="
                       w-full
@@ -85,7 +85,7 @@
                       text-sm
                       placeholder-gray-400
                       bg-white
-                      border border-slate-300
+                      border border-slate-300 
                       rounded-md
                       py-2.5
                       pl-12
@@ -98,7 +98,7 @@
             <!-- One Flight -->
             <div class="w-full" v-show="flightMode === 'oneflight'">
               <DatePicker v-model="goDate" :attributes="attrs" color="indigo" locale="th"
-                :model-config="{ type: 'string', mask: 'MM/DD/YYYY' }">
+                :model-config="{ type: 'string', mask: 'YYYY/MM/DD' }">
                 <template v-slot="{ inputEvents }" class="date-input w-full">
                   <div v-on="inputEvents">
                     <label class="relative block">
@@ -126,7 +126,7 @@
             <!-- Multiple Flight -->
             <div class="flight w-full flex justify-between" v-show="flightMode === 'multiple'">
               <DatePicker :columns="2" v-model="range" is-range :attributes="attrs" color="indigo" locale="th"
-                :model-config="{ type: 'string', mask: 'MM/DD/YYYY' }">
+                :model-config="{ type: 'string', mask: 'YYYY/MM/DD' }">
                 <template v-slot="{ inputEvents }">
                   <div v-on="inputEvents.start">
                     <label class="relative block" style="width: 335px">
@@ -153,7 +153,7 @@
               </DatePicker>
 
               <DatePicker :columns="2" v-model="range" is-range :attributes="attrs" color="indigo" locale="th"
-                :model-config="{ type: 'string', mask: 'MM/DD/YYYY' }">
+                :model-config="{ type: 'string', mask: 'YYYY/MM/DD' }">
                 <template v-slot="{ inputEvents }">
                   <div v-on="inputEvents.start">
                     <label class="relative block" style="width: 335px">
@@ -298,15 +298,13 @@ export default {
       dateTo:"",
       openLogin: false,
       openRegister: false,
-      flightMode: "multiple",
+      flightMode: "oneflight",
       goDate: null,
       books: [
-        "Old Man's War" ,
-        "The Lock Artist",
-        "HTML5",
-        "Right Ho Jeeves",
-        "The Code of the Wooster",
-        "Thank You Jeeves"
+        "Seoul - Korea",
+        "Tokyo - Japan",
+        "Beijing - China",
+        "Madrid - Spain"
       ],
       attrs: [
         {
@@ -331,16 +329,21 @@ export default {
   },
   methods: {
     findFlight() {
+      this.dateFrom = this.goDate.replaceAll("/", "-")
+      // this.dateTo = this.range.end.replaceAll("/", "-")
       let flight = {
         "from": "Bangkok - Suvarnabhumi",
         "to": this.goingTo,
-        "dateFrom": this.dateFrom,
-        "dateTo": this.dateTo
+        "dateFrom": this.dateFrom
+        // "dateTo": this.dateTo
       }
       axios.post("http://localhost:9002/flights/getFlightWithTo", flight)
                 .then((res) => {
-                    if (res.data._id != []) {  
-                        alert(res.data.length);
+
+                    if (res.data.length != 0) {
+                      localStorage.setItem("searchFlight", JSON.stringify(res.data))
+                      localStorage.setItem("toSearch", this.goingTo)
+                      this.$router.push('/choose')
                     }
                     else {
                         alert("POST Failed");
