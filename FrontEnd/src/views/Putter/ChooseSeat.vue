@@ -73,7 +73,7 @@
               </div>
             </div>
           </div>
-          <button @click="clickToContinue()" class="mt-12 py-4 text-white rounded-lg font-thai text-lg font-copper"
+          <button @click="clickToContinue()" class="mt-12 py-4 text-white rounded-lg text-lg font-copper"
             style="background-color : #A590C7">CONTINUE</button>
         </div>
       </div>
@@ -149,7 +149,6 @@ export default {
     if (JSON.parse(localStorage.getItem("passenger")) == null) {
       alert("Please Login First !")
       this.$router.push('/')
-
     }
   }
 

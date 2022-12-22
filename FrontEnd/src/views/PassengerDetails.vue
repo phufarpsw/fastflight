@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="relative min-h-screen">
+  <div id="app" class="relative min-h-screen pb-16">
     <Navbar />
     <div class="flex justify-center items-center mt-10">
       <div class="
@@ -153,7 +153,7 @@
           rounded-lg
         ">
         <div class="border-b p-4">
-          <p class="text-center">ข้อมูลผู้เดินทาง {{'คนที่ '+(index+1) }}</p>
+          <p class="text-center">ข้อมูลผู้เดินทาง {{ 'คนที่ ' + (index + 1) }}</p>
         </div>
         <div class="w-full px-12 flex flex-col my-6">
           <form action="" class="w-full space-y-6">
@@ -185,7 +185,7 @@
                       pr-4
                       focus:outline-none
                       peer
-                    " placeholder="ชื่อจริง" type="text" />
+                    " placeholder="ชื่อจริง" type="text" v-model="allPassenger[index].fname" />
                 </label>
               </div>
 
@@ -220,7 +220,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    " placeholder="นามสกุล" type="text" />
+                    " placeholder="นามสกุล" type="text" v-model="allPassenger[index].sname" />
                 </label>
               </div>
             </div>
@@ -369,7 +369,7 @@
                     pl-12
                     pr-4
                     focus:outline-none
-                  " placeholder="วันหมดอายุหนังสือเดินทาง" type="date"/>
+                  " placeholder="วันหมดอายุหนังสือเดินทาง" type="date" />
                   </label>
                 </div>
               </template>
@@ -388,7 +388,7 @@
                 text-center
                 items-center
                 dark:bg-blue-600 dark:focus:ring-purple-400
-              ">
+              " v-if="index == numOfPassenger - 1" @click="submitForm()">
               CONTINUE
             </button>
           </form>
@@ -412,6 +412,7 @@ export default {
     return {
       flightMode: "multiple",
       numOfPassenger: JSON.parse(localStorage.getItem("numOfPassenger")),
+      flightDetail: JSON.parse(localStorage.getItem("choose")),
       goDate: null,
       attrs: [
         {
@@ -425,13 +426,47 @@ export default {
       range: {
         start: null,
         end: null
-      }
+      },
+      allPassenger: [],
+      sendingPassenger: [],
+      loginuser: null
     };
   },
   methods: {
     setOneFlightTrue() {
       this.oneFlight = true
     },
+    submitForm() {
+      for (let j = 0; j < this.allPassenger.length; j++) {
+        let arr = {
+          "username": this.loginuser.username,
+          "fullName": this.allPassenger[j].fname + " " + this.allPassenger[j].sname,
+          "from": this.flightDetail.from,
+          "to": this.flightDetail.to,
+          "airline": this.flightDetail.airline,
+          "airlineID": this.flightDetail.airlineID,
+          "planeName": this.flightDetail.planeName,
+          "goFlight": this.flightDetail.goFlight,
+          "returnFlight": this.flightDetail.returnFlight,
+          "seat": this.allPassenger[j].seat,
+          "price": this.flightDetail.price
+        }
+        this.sendingPassenger.push(arr)
+        axios.post("http://localhost:9003/reserve", arr)
+          .then((res) => {
+            if (res.data != "CreateReserve Error") {
+              this.$router.push('/recipe')
+            }
+            else {
+              alert("POST Failed");
+            }
+          }).catch(err => {
+            console.log(err);
+          })
+        localStorage.setItem("history", JSON.stringify(this.sendingPassenger))
+
+      }
+    }
   },
   mounted() {
     if (JSON.parse(localStorage.getItem("passenger")) == null) {
@@ -439,6 +474,17 @@ export default {
       this.$router.push('/')
 
     }
+    this.loginuser = JSON.parse(localStorage.getItem("passenger"))
+    let allSeat = JSON.parse(localStorage.getItem("reserve"))
+    let listOfSeat = allSeat.seat.split(", ")
+    for (let index = 0; index < localStorage.getItem("numOfPassenger"); index++) {
+      this.allPassenger.push({
+        "fname": "",
+        "sname": "",
+        "seat": listOfSeat[index]
+      })
+    }
+
   }
 };
 </script>

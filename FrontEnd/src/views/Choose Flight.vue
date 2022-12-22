@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="relative min-h-screen">
-    <SignUp v-show="openRegister" />
-    <Login v-show="openLogin" />
+    <!-- <SignUp v-show="openRegister" />
+    <Login v-show="openLogin" /> -->
     <Navbar />
 
     <div class="w-full mt-10 h-4/5 flex justify-center items-center">
@@ -16,8 +16,7 @@
               <div class="py-6">
                 <p class="justify-self-center self-center font-medium topic-font text-2xl mb-2 font-medium">
                   Depature flight to {{ where }}</p>
-                <p class="justify-self-center self-center font-medium topic-font text-lg text-slate-500">Tue, 17
-                  Dec 2022 | {{ Flights.length }} Travelers</p>
+                <p class="justify-self-center self-center font-medium topic-font text-lg text-slate-500">{{ this.date_from }} | {{ Flights.length }} Travelers</p>
               </div>
               <div v-for="(item, index) in Flights" :key="index"
                 class="flight-dropdown flex flex-col justify-center items-center">
@@ -87,12 +86,12 @@
                   <div class="ml-8">
                     <div class="flex">
                       <div class="ml-4">
-                        <p class="text-lg font-bold">{{ item.goFlight.slice(0, 6) }}</p>
-                        <!-- <p class="text-slate-500">{{ this.convertMonth(index) }}</p> -->
+                        <p class="text-lg font-bold">{{ item.goFlight.slice(0,6) }}</p>
+                        <p class="text-slate-500">{{ date_from.slice(10) }}</p>
                       </div>
                       <div class="ml-12">
                         <p class="font-bold">Bangkok (BKK)</p>
-                        <p class="text-slate-500">Suvarnabhum Airport</p>
+                        <p class="text-slate-500">Suvarnabhumi Airport</p>
                       </div>
                     </div>
                     <div class="flex ml-4 my-6">
@@ -102,7 +101,7 @@
                     <div class="flex">
                       <div class="ml-4">
                         <p class="text-lg font-bold">{{ item.returnFlight.slice(0, 6) }}</p>
-                        <p class="text-slate-500">3 Jan 2023</p>
+                        <p class="text-slate-500">{{ date_to[index] }}</p>
                       </div>
                       <div class="ml-12">
                         <p class="font-bold">Tokyo (NRT)</p>
@@ -151,22 +150,24 @@
 import axios from "axios";
 import navbar from "./component/navbar.vue";
 import Vue from 'vue';
-import SignUp from "./login/signup.vue";
-import Login from './login/login.vue';
+// import SignUp from "./login/signup.vue";
+// import Login from './login/login.vue';
 export default {
   name: "choose",
   components: {
     Navbar: navbar,
-    SignUp: SignUp,
-    Login: Login,
+    // SignUp: SignUp,
+    // Login: Login,
     openLogin: false,
     openRegister: false,
-    dateFlight: ""
+    dateFlight: "",
   },
   data(){
     return {
       Flights:JSON.parse(localStorage.getItem("searchFlight")),
-      where: localStorage.getItem("toSearch")
+      where: localStorage.getItem("toSearch"),
+      date_from: JSON.parse(localStorage.getItem('date_from')),
+      date_to: JSON.parse(localStorage.getItem("date_to"))
     };
   },
   methods:{
@@ -174,18 +175,9 @@ export default {
       let query = "#dropdown-items"+index
       $(query).slideToggle("slow", (e)=> {
       })
-      // let cc = $(query).hasClass('toggleArrow')
-      // if(cc){
-      //   $('#imgArrow'+index).attr("src","../assets/arrowDown.svg")
-      // }
-      // else{
-      //   $('#imgArrow'+index).attr("src", "../assets/arrowUp.svg")
-      // }
-      // $(query).toggleClass('toggleArrow')
     
     },
     chooseFlight(index){
-      alert(this.dateFlight)
       localStorage.setItem("choose", JSON.stringify(this.Flights[index]))
       this.$router.push('/seat')
       console.log(JSON.stringify(this.Flights[index]))

@@ -41,7 +41,7 @@
                     ">
                     <img src="../../src/assets/plane-up.svg" alt="" />
                   </span>
-                  
+
                   <input class="
                       w-full
                       thai-font
@@ -55,7 +55,8 @@
                       pr-4
                       focus:outline-none
                       peer
-                    " placeholder="เลือกเมืองสำหรับเที่ยวบินขาไป" type="text" value="Bangkok - Suvarnabhumi" disabled/>
+                    " placeholder="เลือกเมืองสำหรับเที่ยวบินขาไป" type="text" value="Bangkok - Suvarnabhumi"
+                    disabled />
                 </label>
               </div>
 
@@ -77,7 +78,8 @@
                     ">
                     <img src="../../src/assets/plane-down.svg" alt="" />
                   </span>
-                  <v-select v-model="goingTo" :options="books" class="thai-font text-sm"  placeholder="เลือกเมืองปลายทาง" outlined>
+                  <v-select v-model="goingTo" :options="books" class="thai-font text-sm" placeholder="เลือกเมืองปลายทาง"
+                    outlined>
                   </v-select>
                   <!-- <input class="
                       w-full
@@ -295,8 +297,8 @@ export default {
     return {
       goingTo: "",
       dateFrom: "",
-      dateTo:"",
-      numOfPassenger:"",
+      dateTo: "",
+      numOfPassenger: "",
       openLogin: false,
       openRegister: false,
       flightMode: "oneflight",
@@ -338,20 +340,37 @@ export default {
         // "dateTo": this.dateTo
       }
       axios.post("http://localhost:9002/flights/getFlightWithTo", flight)
-                .then((res) => {
+        .then((res) => {
 
-                    if (res.data.length != 0) {
-                      localStorage.setItem("searchFlight", JSON.stringify(res.data))
-                      localStorage.setItem("toSearch", this.goingTo)
-                      localStorage.setItem("numOfPassenger", this.numOfPassenger)
-                      this.$router.push('/choose')
-                    }
-                    else {
-                        alert("POST Failed");
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
+          if (res.data.length != 0) {
+            localStorage.setItem("searchFlight", JSON.stringify(res.data))
+            localStorage.setItem("toSearch", this.goingTo)
+            localStorage.setItem("numOfPassenger", this.numOfPassenger)
+
+            // DateFrom
+            let date = new Date();
+            let arr_date = JSON.parse(localStorage.getItem("searchFlight"))[0].dateFrom.split("-");
+            date.setMonth(arr_date[1] - 1);
+            let date_from = date.toLocaleString('default', {weekday: 'long'})+", "+arr_date[2] + " " + date.toLocaleString('en-US', { month: 'short' }) + " " + arr_date[0];
+            localStorage.setItem("date_from", JSON.stringify(date_from))
+            
+            // DateTo
+            let date_to = []
+            for (let i = 0; i < JSON.parse(localStorage.getItem("searchFlight")).length; i++) {
+              let arr_datee = JSON.parse(localStorage.getItem("searchFlight"))[i].dateTo.split("-");
+              date.setMonth(arr_datee[1]-1)
+              date_to.push(arr_datee[2] + " " + date.toLocaleString('en-US', { month: 'short' }) + " " + arr_datee[0])
+              
+            }
+            localStorage.setItem("date_to", JSON.stringify(date_to))
+            this.$router.push('/choose')
+          }
+          else {
+            alert("POST Failed");
+          }
+        }).catch(err => {
+          console.log(err);
+        })
     }
   }
 };

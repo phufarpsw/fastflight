@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="relative h-screen">
+  <div id="app" class="relative min-h-screen pb-10">
     <Navbar />
     <div class="flex justify-center items-center mt-24">
       <div
@@ -14,7 +14,7 @@
       <div class="border-b py-6 px-7 flex justify-between">
         <div class="">
             <p class="ml-6 justify-self-center self-center font-medium topic-font text-2xl mb-2 font-medium" style="color : #636161">Detail</p>
-                <p class="ml-6 justify-self-center self-center font-extralight topic-font text-lg text-slate-500">Tue, 17 Dec 2022 | 1 Travelers</p>
+                <p class="ml-6 justify-self-center self-center font-extralight topic-font text-lg text-slate-500">{{ this.date_from }} | {{ this.numOfPassenger }} Travelers</p>
         </div>
         <button
               type="submit"
@@ -39,47 +39,47 @@
               EXPORT PDF
             </button>
             </div>
-        <div class="w-full px-12 flex flex-col my-6">
+        <div v-for="(item, index) in this.numOfPassenger" :key="index" class="w-full px-12 flex flex-col my-6">
             <div class="image-container mt-6 mb-6">
                 <div class="">
-                    <img src="../../assets/Receipt.svg" alt="">
+                    <img src="../../assets/recipe-template.svg" alt="">
                 <div class="left-content">
-                    <p class=" text-2xl thai-font text-left">฿ 17,444</p>
-                    <p class=" text-xl thai-font mt-9 text-left">17 Jan 2023</p>
+                    <p class=" text-2xl font-chakra text-left">฿ {{ listReserve[index].price }}</p>
+                    <p class=" text-xl font-chakra mt-9 text-left font-thin">{{ date_from.slice(10)}}</p> 
                 </div>
                 <div class="right-content">
                     <div class="flex">
                         <div class="">
-                            <p class=" text-3xl thai-font text-left">BKK</p>
-                    <p class=" text-lg thai-font text-left font-extralight">Bangkok</p>
+                            <p class=" text-3xl font-chakra text-left">BKK</p>
+                    <p class=" text-lg font-chakra text-left font-extralight">Bangkok</p>
                         </div>
                         <div class="ml-44">
-                            <p class=" text-3xl thai-font text-left">NRT</p>
-                    <p class=" text-lg thai-font text-left font-extralight">Tokyo</p>
+                            <p class=" text-3xl font-chakra text-left">NRT</p>
+                    <p class=" text-lg font-chakra text-left font-extralight ">Tokyo</p>
                         </div>
                     </div>
                     <div class="flex mt-3">
-                        <div><p class="text-lg thai-font text-left">Somjai kaigai</p>
-                        <p class="text-left thai-font font-thin">Name</p></div>
+                        <div><p class="text-lg font-chakra text-left">{{ listReserve[index].fullName }}</p>
+                        <p class="text-left font-chakra font-thin text-gray-300">Name</p></div>
                         <div class="ml-20">
-                            <p class="text-lg thai-font text-left">TR607</p>
-                            <p class="text-left thai-font font-thin"> Flight</p>
+                            <p class="text-lg font-chakra text-left">{{ listReserve[index].airlineID.toUpperCase() }}</p>
+                            <p class="text-left font-chakra font-thin text-gray-300"> Flight</p>
                         </div>
                     </div>
                     <div class="flex mt-3">
-                        <div><p class="thai-font text-lg text-left">12:55</p>
-                        <p class="thai-font text-sm font-thin text-left">Depature</p></div>
+                        <div><p class="font-chakra text-lg text-left">12:55</p>
+                        <p class="font-chakra text-sm font-thin text-left text-gray-300">Depature</p></div>
                         <div class="ml-12">
-                        <p class="thai-font text-lg">6:00</p>
-                        <p class="thai-font text-sm font-thin">Arrival</p>
+                        <p class="font-chakra text-lg">6:00</p>
+                        <p class="font-chakra text-sm font-thin text-gray-300">Arrival</p>
                     </div>
                     <div class="ml-12">
-                        <p class="thai-font text-lg">3B</p>
-                        <p class="thai-font text-sm font-thin">Seat</p>
+                        <p class="font-chakra text-lg">{{ listReserve[index].seat }}</p>
+                        <p class="font-chakra text-sm font-thin text-gray-300">Seat</p>
                     </div>
                     <div class="ml-12">
-                        <p class="thai-font text-lg">6</p>
-                        <p class="thai-font text-sm font-thin">Gate</p>
+                        <p class="font-chakra text-lg">6</p>
+                        <p class="font-chakra text-sm font-thin text-gray-300">Gate</p>
                     </div>
                     </div>
                 </div>
@@ -103,6 +103,9 @@ export default {
   data(){
     return {
       flightMode : "multiple",
+      numOfPassenger: JSON.parse(localStorage.getItem("numOfPassenger")),
+      listReserve: JSON.parse(localStorage.getItem("history")),
+      date_from: JSON.parse(localStorage.getItem('date_from')),
       goDate: null,
       attrs: [
         {
