@@ -11,7 +11,7 @@ public interface PassengerRepository extends MongoRepository<PassengerEntity, St
     public PassengerEntity findByUsername(String username, String password);
 
     @Query( "{_id: '?0'}")
-    public PassengerEntity findByUserid(String id);
+    public PassengerEntity findByPassengerId(String id);
 
     @Query("{username:  '?0'}")
     public PassengerEntity findByUsername(String username);

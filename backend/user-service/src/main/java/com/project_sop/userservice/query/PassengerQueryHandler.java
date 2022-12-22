@@ -1,6 +1,7 @@
 package com.project_sop.userservice.query;
 
 import com.project_sop.userservice.command.rest.CreatePassengerRestModel;
+import com.project_sop.userservice.command.rest.UpdatePassengerRestModel;
 import com.project_sop.userservice.core.PassengerEntity;
 import com.project_sop.userservice.core.data.PassengerRepository;
 import com.project_sop.userservice.query.rest.PassengerRestModel;
@@ -46,6 +47,17 @@ public class PassengerQueryHandler {
     }
 
     @QueryHandler
+    public UpdatePassengerRestModel updatePassenger(FindPassengerById findPassengerById){
+        PassengerEntity entity = passengerRepository.findByPassengerId(findPassengerById.get_id());
+        UpdatePassengerRestModel updatePassengerRestModel = new UpdatePassengerRestModel();
+        if(entity != null){
+            BeanUtils.copyProperties(entity, updatePassengerRestModel);
+        }
+        return updatePassengerRestModel;
+
+    }
+
+    @QueryHandler
     public PassengerRestModel loginPassenger(LoginPassenger loginPassenger){
         PassengerRestModel passenger = new PassengerRestModel();
         PassengerEntity entity = passengerRepository.findByUsername(loginPassenger.getUsername(), loginPassenger.getPassword());
@@ -54,4 +66,5 @@ public class PassengerQueryHandler {
         }
         return passenger;
     }
+
 }

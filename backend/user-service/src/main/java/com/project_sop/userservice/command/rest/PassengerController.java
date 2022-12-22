@@ -22,7 +22,7 @@ public class PassengerController {
     }
 
     @PostMapping
-    public String addUser(@RequestBody CreatePassengerRestModel createPassengerRestModel){
+    public String addPassenger(@RequestBody CreatePassengerRestModel createPassengerRestModel){
         try{
             Object message = rabbitTemplate.convertSendAndReceive("Direct","create", createPassengerRestModel);
             return (String)message;
@@ -36,7 +36,25 @@ public class PassengerController {
         Object getUser = rabbitTemplate.convertSendAndReceive("Direct", "getbyUsername", passengerRestModel);
         return (PassengerRestModel) getUser;
     }
-
+    @RequestMapping(value = "/updatePassenger", method = RequestMethod.POST)
+    public String updatePassenger(@RequestBody UpdatePassengerRestModel updatePassengerRestModel){
+        try{
+            Object getPassenger = rabbitTemplate.convertSendAndReceive("Direct","getbyId", updatePassengerRestModel);
+            UpdatePassengerRestModel passengerOld = (UpdatePassengerRestModel) getPassenger;
+            passengerOld.setUsername(updatePassengerRestModel.getUsername());
+            passengerOld.setPassword(updatePassengerRestModel.getPassword());
+            passengerOld.setFirstName(updatePassengerRestModel.getFirstName());
+            passengerOld.setLastName(updatePassengerRestModel.getLastName());
+            passengerOld.setIdCardNumber(updatePassengerRestModel.getIdCardNumber());
+            passengerOld.setEmail(updatePassengerRestModel.getEmail());
+            passengerOld.setTel(updatePassengerRestModel.getTel());
+            System.out.println(passengerOld);
+            Object msg = rabbitTemplate.convertSendAndReceive("Direct", "updatepassenger", passengerOld);
+            return (String) msg;
+        }catch (Exception e){
+            return "Update Error";
+        }
+    }
     @RequestMapping("/login")
     public PassengerRestModel login(@RequestBody PassengerRestModel passengerRestModel){
         Object validation = rabbitTemplate.convertSendAndReceive("Direct", "login", passengerRestModel);

@@ -292,9 +292,12 @@ import 'vue-select/dist/vue-select.css';
 Vue.component('date-picker', DatePicker)
 
 export default {
-  name: "Home",
+  name: "flight",
   data() {
     return {
+      activeHome: JSON.parse(localStorage.getItem("activeHome")),
+      activeFlight: JSON.parse(localStorage.getItem("activeFlight")),
+      activeTrip:  JSON.parse(localStorage.getItem("activeTrip")),
       goingTo: "",
       dateFrom: "",
       dateTo: "",
@@ -372,6 +375,8 @@ export default {
           console.log(err);
         })
     }
+  },
+  mounted(){
   }
 };
 </script>

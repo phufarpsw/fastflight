@@ -1,8 +1,10 @@
 package com.project_sop.userservice.service;
 
 import com.project_sop.userservice.command.rest.CreatePassengerRestModel;
+import com.project_sop.userservice.command.rest.UpdatePassengerRestModel;
 import com.project_sop.userservice.core.PassengerEntity;
 import com.project_sop.userservice.core.data.PassengerRepository;
+import com.project_sop.userservice.query.FindPassengerById;
 import com.project_sop.userservice.query.FindUserByUsername;
 import com.project_sop.userservice.query.FindUserQuery;
 import com.project_sop.userservice.query.LoginPassenger;
@@ -30,12 +32,11 @@ public class PassengerServiceQuery {
     }
 
     @RabbitListener(queues = "GetPassengerById")
-    public CreatePassengerRestModel getUserById(CreatePassengerRestModel createPassengerRestModel){
-        System.out.println(createPassengerRestModel);
-        PassengerEntity passengerEntity = passengerRepository.findByUserid(createPassengerRestModel.get_id());
-        CreatePassengerRestModel user = new CreatePassengerRestModel();
-        BeanUtils.copyProperties(passengerEntity, user);
-        return user;
+    public UpdatePassengerRestModel getUserById(UpdatePassengerRestModel updatePassengerRestModel){
+        FindPassengerById findPassengerById = new FindPassengerById(updatePassengerRestModel.get_id());
+        List<UpdatePassengerRestModel> passenger = queryGateway
+                .query(findPassengerById, ResponseTypes.multipleInstancesOf(UpdatePassengerRestModel.class)).join();
+        return passenger.get(0);
     }
 
     @RabbitListener(queues = "GetPassenger")

@@ -3,10 +3,16 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 const router = new VueRouter({
-  routes: [{ 
-    path: '/',
-    name: "home",
-    component: () => import("../views/Home.vue")
+  routes: [
+    {
+      path: '/',
+      name: "home",
+      component : () => import("../views/HomePage.vue")
+    },
+    { 
+    path: '/flight',
+    name: "flight",
+    component: () => import("../views/flight.vue")
   },
   {
     path: '/choose',
@@ -33,6 +39,7 @@ const router = new VueRouter({
     name: "edit",
     component : () => import("../views/Passengers/EditProfile.vue")
   }
+  
 ]
 })
 router.beforeEach((to, from, next) => {
@@ -51,25 +58,5 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-//You don’t have the right to update
-
-// const router = new VueRouter({
-//   routes
-// })
-// router.beforeEach((to, from, next) => {
-//   const isLoggedIn = !!localStorage.getItem('user')
-
-//   if (to.meta.login && !isLoggedIn) {
-//     alert('Please login first!')
-//     next({ path: '/login' })
-//   }
-
-//   if (to.meta.guest && isLoggedIn) {
-//     alert("You've already logged in")
-//     next({ path: '/'})
-//   }
-
-//   next()
-// })
 
 export default router;

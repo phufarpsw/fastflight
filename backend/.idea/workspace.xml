@@ -5,34 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a7689e9-da55-4108-b8fd-ccf9f879b291" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/views/Choose Flight.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/views/Choose Flight.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/views/Home.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../FrontEnd/src/views/Passengers/EditProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/views/Passengers/EditProfile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-server/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/CreateFlightCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/CreateFlightCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/FlightAggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/FlightAggregate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/rest/CreateFlightRestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/rest/CreateFlightRestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/rest/FlightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/command/rest/FlightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/core/FlightEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/core/FlightEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/core/data/FlightRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/core/data/FlightRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/core/event/CreateFlightEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/core/event/CreateFlightEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/query/FindByDestinationWithTo.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/query/FindByDestinationWithTo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/query/FlightQueryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/query/FlightQueryHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/query/rest/FlightRestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/query/rest/FlightRestModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/service/FlightServiceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/service/FlightServiceCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/service/FlightServiceQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/java/com/project_sop/flightservice/service/FlightServiceQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flight-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/flight-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reserve-service/src/main/java/com/project_sop/reserveservice/query/FindOnlyOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/reserve-service/src/main/java/com/project_sop/reserveservice/query/FindOnlyOne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/views/component/navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/src/views/component/navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/PassengerAggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/PassengerAggregate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/UpdatePassengerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/UpdatePassengerCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/rest/PassengerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/rest/PassengerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/rest/UpdatePassengerRestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/command/rest/UpdatePassengerRestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/core/data/PassengerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/core/data/PassengerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/core/event/UpdatePassengerEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/core/event/UpdatePassengerEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/query/FindPassengerById.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/query/FindPassengerById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/query/PassengerEventsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/query/PassengerEventsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/query/PassengerQueryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/query/PassengerQueryHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/service/PassengerServiceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/service/PassengerServiceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/service/PassengerServiceQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/project_sop/userservice/service/PassengerServiceQuery.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,23 +53,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/User/Desktop/Vue/fastflight/backend",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "spring.configuration.checksum": "b504dc912aa589286901629390a628c1"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/src/src/main/java/com&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b504dc912aa589286901629390a628c1&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -97,7 +85,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ReserveServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.project_sop.apigateway.ApiGatewayApplication" />
@@ -166,10 +154,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserServiceApplication" />
         <item itemvalue="Spring Boot.FlightServiceApplication" />
         <item itemvalue="Spring Boot.DiscoveryServiceApplication" />
         <item itemvalue="Spring Boot.ApiGatewayApplication" />
+        <item itemvalue="Spring Boot.UserServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +171,8 @@
       <updated>1671565408097</updated>
       <workItem from="1671565411256" duration="1994000" />
       <workItem from="1671601511185" duration="19766000" />
-      <workItem from="1671631787601" duration="4345000" />
+      <workItem from="1671631787601" duration="10061000" />
+      <workItem from="1671688329703" duration="14865000" />
     </task>
     <servers />
   </component>

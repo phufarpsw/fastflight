@@ -26,8 +26,6 @@
                   <img src="../../assets/profile.svg" alt="" style="width:40px" class="ml-4" />
                   <p class="ml-6 justify-self-center self-center font-medium topic-font">Profile</p>
                 </div>
-                <p class="ml-6 justify-self-center self-center font-medium topic-font mr-4" style="color : #A590C7">EDIT
-                </p>
               </div>
               <!-- Form -->
               <div class="space-y-4 pt-10 pb-10">
@@ -61,7 +59,7 @@
                       pr-4
                       focus:outline-none
                       peer
-                    " placeholder="ชื่อจริง" v-model="firstname" type="text" />
+                    " placeholder="ชื่อจริง" v-model="passenger.firstName" type="text" :disabled="!enableEditProfile" v-bind:class="{'inputDisabled' : !enableEditProfile}"/>
                           </label>
                         </div>
                         <div>
@@ -89,7 +87,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    " placeholder="นามสกุล" v-model="lastname" type="text" />
+                    " placeholder="นามสกุล" v-model="passenger.lastName" type="text" :disabled="!enableEditProfile" v-bind:class="{'inputDisabled' : !enableEditProfile}"/>
                           </label>
                         </div>
                       </div>
@@ -131,7 +129,7 @@
                       pr-4
                       focus:outline-none
                       peer
-                    " placeholder="เบอร์โทรศัพท์" v-model="telephone" type="text" />
+                    " placeholder="เบอร์โทรศัพท์" v-model="passenger.tel" type="text" :disabled="!enableEditProfile" v-bind:class="{'inputDisabled' : !enableEditProfile}"/>
                           </label>
                         </div>
                         <div>
@@ -159,7 +157,7 @@
                       pl-12
                       pr-4
                       focus:outline-none
-                    " placeholder="อีเมล" v-model="emails" type="text" />
+                    " placeholder="อีเมล" v-model="passenger.email" type="text" :disabled="!enableEditProfile" v-bind:class="{'inputDisabled' : !enableEditProfile}"/>
                           </label>
                         </div>
                       </div>
@@ -183,7 +181,7 @@
                     pl-12
                     pr-4
                     focus:outline-none
-                  " placeholder="เลขบัตรประชาชน" v-model="citizen" type="text" />
+                  " placeholder="เลขบัตรประชาชน" v-model="passenger.idCardNumber" type="text" :disabled="!enableEditProfile" v-bind:class="{'inputDisabled' : !enableEditProfile}"/>
                             </label>
                           </div>
                         </template>
@@ -192,8 +190,12 @@
                   </div>
                 </div>
                 <div class="flex justify-end mr-12">
-                  <button @click="EditPassenger()" class="px-12 py-2 text-white rounded-lg text-md font-copper"
-                    style="background-color : #A590C7">SAVE</button>
+                  <button v-show="!enableEditProfile" @click="enableEditProfile = true" class="px-12 py-2 text-white rounded-lg text-md font-copper"
+                    style="background-color : #A590C7">EDIT</button>
+                  <button v-show="enableEditProfile" @click="enableEditProfile = false; passenger = oldPassenger" class="px-12 py-2 text-white rounded-lg text-md font-copper"
+                    style="background-color : #C79090">Cancel</button>
+                    <button v-show="enableEditProfile" @click="EditPassenger()" class="px-12 py-2 text-white rounded-lg text-md font-copper ml-4"
+                    style="background-color : #90C79F">SAVE</button>
                 </div>
               </div>
               <!-- End -->
@@ -202,7 +204,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -216,13 +217,15 @@ export default {
   },
   data() {
     return {
-      passenger: JSON.parse(localStorage.getItem("passenger")),
+      passenger: null,
+      oldPassenger: JSON.parse(localStorage.getItem("passenger")),
       name: JSON.parse(localStorage.getItem("passenger")).firstName,
       firstname : "",
       lastname : "",
       citizen : "",
       emails : "",
       telephone : "",
+      enableEditProfile : false,
     };
   },
   methods:{
@@ -235,16 +238,17 @@ export default {
         "_id" : this.passenger._id,
         "username" : this.passenger.username,
         "password" : this.passenger.password,
-        "firstName": this.firstname,
-        "lastName": this.lastname,
-        "idCardNumber": this.citizen,
-        "email": this.emails,
-        "tel": this.telephone
+        "firstName": this.passenger.firstName,
+        "lastName": this.passenger.lastName,
+        "idCardNumber": this.passenger.idCardNumber,
+        "email": this.passenger.email,
+        "tel": this.passenger.tel
       }
       axios.post("http://localhost:9001/passengers/updatePassenger", data)
         .then((res) => {
           if (res.data == "Update Successful"){
             alert("Passenger has been edited")
+            localStorage.setItem("passenger", JSON.stringify(data))
             location.reload()
           }
           else{
@@ -259,6 +263,8 @@ export default {
       alert("Please Login First !")
       this.$router.push('/')
     }
+    this.passenger = JSON.parse(localStorage.getItem("passenger"))
+
   }
 };
 </script>
@@ -311,7 +317,9 @@ export default {
   border: 1px solid #ccc;
   margin: 0;
 }
-
+.inputDisabled{
+  background-color: rgb(240, 240, 240);
+}
 .input-group-addon {
   padding: 6px 12px;
   font-size: 14px;

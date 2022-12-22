@@ -2,6 +2,7 @@ package com.project_sop.userservice.command;
 
 
 import com.project_sop.userservice.core.event.CreatePassengerEvent;
+import com.project_sop.userservice.core.event.UpdatePassengerEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -53,5 +54,30 @@ public class PassengerAggregate {
         this.tel = createPassengerEvent.getTel();
         this.airline = createPassengerEvent.getAirline();
         this.seat = createPassengerEvent.getSeat();
+    }
+
+    @CommandHandler
+    public PassengerAggregate(UpdatePassengerCommand command){
+        if(command.getIdCardNumber().length() != 13){
+            throw new IllegalArgumentException("Please input your idCardNumber");
+        }
+
+        UpdatePassengerEvent updatePassengerEvent = new UpdatePassengerEvent();
+        BeanUtils.copyProperties(command, updatePassengerEvent);
+        AggregateLifecycle.apply(updatePassengerEvent);
+    }
+
+    @EventSourcingHandler
+    public void on(UpdatePassengerEvent updatePassengerEvent){
+        this._id = updatePassengerEvent.get_id();
+        this.username = updatePassengerEvent.getUsername();
+        this.password = updatePassengerEvent.getPassword();
+        this.firstName = updatePassengerEvent.getFirstName();
+        this.lastName = updatePassengerEvent.getLastName();
+        this.idCardNumber = updatePassengerEvent.getIdCardNumber();
+        this.email = updatePassengerEvent.getEmail();
+        this.tel = updatePassengerEvent.getTel();
+        this.airline = updatePassengerEvent.getAirline();
+        this.seat = updatePassengerEvent.getSeat();
     }
 }

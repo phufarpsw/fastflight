@@ -9,6 +9,8 @@ import Vuelidate from 'vuelidate'
 import vSelect from 'vue-select'
 
 import '../public/css/style.css'
+import VueCarousel from 'vue-carousel';
+Vue.use(VueCarousel);
 library.add(fas)
 Vue.component('v-select', vSelect)
 Vue.component('icon', FontAwesomeIcon)

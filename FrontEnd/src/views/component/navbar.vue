@@ -9,7 +9,9 @@
       <router-link to="/">
         <p class="cursor-pointer font-copper">HOME</p>
       </router-link>
+      <router-link to="/flight">
         <p class="cursor-pointer font-copper">FLIGHT</p>
+      </router-link>
         <p class="cursor-pointer font-copper">MY TRIP</p>
       </div>
       <div v-show="token === null" class="login flex w-1/3 justify-end items-center ">
@@ -55,12 +57,18 @@ export default {
   name: "Navbar",
   data() {
     return {
+      activeHome: JSON.parse(localStorage.getItem("activeHome")),
+      activeFlight: JSON.parse(localStorage.getItem("activeFlight")),
+      activeTrip:  JSON.parse(localStorage.getItem("activeTrip")),
       token: JSON.parse(localStorage.getItem("passenger")),
       user : [],
     };
   },
   mounted(){
     this.getData();
+    localStorage.setItem("activeHome", true);
+    localStorage.setItem("activeFlight", false);
+    localStorage.setItem("activeTrip", false);
   },
   methods: {
     getData(){
