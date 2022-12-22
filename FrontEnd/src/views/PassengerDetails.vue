@@ -13,7 +13,7 @@
           <p class="text-center">ข้อมูลการติดต่อ</p>
         </div>
         <div class="w-full px-12 flex flex-col my-6">
-          <form action="" class="w-full space-y-6">
+          <div class="w-full space-y-6">
             <!-- TextField flight -->
             <div class="flight w-full flex justify-between">
               <div>
@@ -139,7 +139,7 @@
                 </label>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -156,7 +156,7 @@
           <p class="text-center">ข้อมูลผู้เดินทาง {{ 'คนที่ ' + (index + 1) }}</p>
         </div>
         <div class="w-full px-12 flex flex-col my-6">
-          <form action="" class="w-full space-y-6">
+          <div class="w-full space-y-6">
             <!-- TextField flight -->
             <div class="flight w-full flex justify-between">
               <div>
@@ -389,9 +389,9 @@
                 items-center
                 dark:bg-blue-600 dark:focus:ring-purple-400
               " v-if="index == numOfPassenger - 1" @click="submitForm()">
-              CONTINUE
+              SUBMIT
             </button>
-          </form>
+          </div>
 
         </div>
       </div>

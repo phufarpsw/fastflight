@@ -1,18 +1,12 @@
 <template>
-  <div id="app" class="relative pb-20"
+  <div id="app" class="relative pb-20 overflow-x-hidden"
     style="background-attachment:scroll; background-position:bottom; background-size:contain">
-    <SignUp v-show="openRegister" />
-    <Login v-show="openLogin" />
+    <SignUp v-show="openRegister"/>
+    <Login v-show="openLogin"/>
     <Navbar />
     <!-- Carousel -->
-    <div class="w-full flex justify-center overflow-hidden" style="height:500px; background-color: #a590c7">
-      <carousel :paginationEnabled="false" :perPage="1" class="w-full" style="height:500px">
-        <slide class="bg-red-200" style="height:500px">
-        </slide>
-        <slide class="bg-red-200" style="height:500px">
-          Slide 2 Content
-        </slide>
-      </carousel>
+    <div class="bg-airport w-full flex justify-center overflow-hidden" style="height:500px;">
+      
     </div>
     <!-- Content -->
     <div class="w-full px-52 py-16">
@@ -130,7 +124,6 @@
 <script>
 import axios from "axios";
 import navbar from "./component/navbar.vue";
-import { Carousel, Slide } from 'vue-carousel';
 import SignUp from "./login/signup.vue";
 import Login from './login/login.vue';
 export default {
@@ -139,8 +132,6 @@ export default {
     Navbar: navbar,
     SignUp: SignUp,
     Login: Login,
-    Carousel,
-    Slide
   },
   data() {
     return {
@@ -177,7 +168,12 @@ h1 {
       rgba(88, 140, 236, 1),
       rgba(106, 106, 207, 1));
 }
-
+.bg-airport{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../assets/airport-terminal.jpg);
+}
 .font-copper {
   font-family: "Copperplate";
 }

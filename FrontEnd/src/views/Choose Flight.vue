@@ -16,7 +16,9 @@
               <div class="py-6">
                 <p class="justify-self-center self-center font-medium topic-font text-2xl mb-2 font-medium">
                   Depature flight to {{ where }}</p>
-                <p class="justify-self-center self-center font-medium topic-font text-lg text-slate-500">{{ this.date_from }} | {{ Flights.length }} Travelers</p>
+                <p class="justify-self-center self-center font-medium topic-font text-lg text-slate-500">{{
+                    this.date_from
+                }} | {{ Flights.length }} Travelers</p>
               </div>
               <div v-for="(item, index) in Flights" :key="index"
                 class="flight-dropdown flex flex-col justify-center items-center">
@@ -26,8 +28,8 @@
                 justify-center
                 items-center
                 rounded-lg
+                shadow-md
                 p-6
-                shadow-lg
               " style="width:1000px">
                   <div class="w-full flex justify-between items-center p-2">
                     <img v-if="Flights[index].airline == 'Thai'" src="../assets/flightlogo.svg" />
@@ -49,7 +51,7 @@
                         <p>15h 5m</p>
                         <p>Transit</p>
                       </div>
-                      <p class="ml-12">฿ {{ item.price }} /pax</p>
+                      <p class="ml-12">{{ convertprice(item.price) }} /pax</p>
                     </div>
                     <div class="flex justify-center items-center space-x-6">
                       <button type="submit" :id="'btnChoose' + index" @click="chooseFlight(index)" class="
@@ -76,17 +78,17 @@
                 </div>
                 <!-- DropDown -->
                 <div :id="'dropdown-items' + index"
-                  class="dropdown-set flex justify-between items-center border rounded-lg px-6 py-12"
+                  class="dropdown-set border flex justify-between items-center rounded-lg px-6 py-12"
                   style="width:1000px">
                   <div class="ml-4">
-                    <p class="text-2xl font-bold" style="color : #525197">{{ item.airlineID }}</p>
+                    <p class="text-2xl font-bold" style="color : #525197">{{ item.airlineID.toUpperCase() }}</p>
                     <p class="text-slate-500">Flight</p>
                   </div>
                   <img src="../assets/PLANELINE.svg" class="ml-8" />
                   <div class="ml-8">
                     <div class="flex">
                       <div class="ml-4">
-                        <p class="text-lg font-bold">{{ item.goFlight.slice(0,6) }}</p>
+                        <p class="text-lg font-bold">{{ item.goFlight.slice(0, 6) }}</p>
                         <p class="text-slate-500">{{ date_from.slice(10) }}</p>
                       </div>
                       <div class="ml-12">
@@ -133,7 +135,6 @@
                   </div>
                 </div>
                 <!-- Close Dropdown -->
-
               </div>
               <!-- HERE -->
             </div>
@@ -181,7 +182,14 @@ export default {
       localStorage.setItem("choose", JSON.stringify(this.Flights[index]))
       this.$router.push('/seat')
       console.log(JSON.stringify(this.Flights[index]))
-    }
+    },
+    convertprice(price) {
+      let price2 = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(price);
+      return price2.slice(4, price2.length - 3) + ' THB'
+    },
   },
   mounted(){
     $(".dropdown-set").hide();
@@ -226,7 +234,12 @@ export default {
   background-position: bottom;
   background-attachment: fixed;
 }
-
+/* .dropdown-set{
+  border-left: 1px solid #B8B7B7;
+  border-right: 1px solid #B8B7B7;
+  border-top: 1px dashed #B8B7B7;
+  border-bottom: 1px dashed #B8B7B7; */
+/* } */
 #panel,
 #flip {
   padding: 5px;

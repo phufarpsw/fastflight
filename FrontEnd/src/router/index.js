@@ -38,6 +38,11 @@ const router = new VueRouter({
     path: '/edit',
     name: "edit",
     component : () => import("../views/Passengers/EditProfile.vue")
+  },
+  {
+    path: '/trip',
+    name: "trip",
+    component : () => import("../views/MyTrip.vue")
   }
   
 ]

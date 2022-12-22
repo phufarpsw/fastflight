@@ -217,7 +217,7 @@
                 pr-4
                 focus:outline-none
                 peer
-              " placeholder="Password" type="text" />
+              " placeholder="Password" type="password" />
                     </label>
 
                     <div class="">
